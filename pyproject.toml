@@ -1,0 +1,14 @@
+[project]
+name = "critics"
+version = "0.1.0"
+requires-python = "==3.10.*"
+description = "critics for vlm hallucination correction"
+readme = {file = "README.md", content-type = "text/markdown"}
+
+dependencies = [
+  "json"
+]
+
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
