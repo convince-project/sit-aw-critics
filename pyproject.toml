@@ -11,5 +11,5 @@ requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["sit-aw-critics"]
+packages = ["sit_aw_critics"]
 
