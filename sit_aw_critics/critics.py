@@ -89,7 +89,9 @@ def critics_trigger_reply2(reply2, reply1):
     if valid == False:
         return valid, disagreement
     
-    valid, disagreement = concistency_critic(reply1, reply2)
+    is_reply1_json, _ = json_format_critic(reply1)
+    if is_reply1_json == True :
+        valid, disagreement = concistency_critic(reply2, reply1)
 
     return valid, disagreement
 
