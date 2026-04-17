@@ -12,7 +12,8 @@ In this particular application with 2 successive VLM calls, we have to do 2 sets
     :align: center
     :alt: Visual language model identification procedure.
 
-we designed 5 critics : 
+we designed 5 critics :
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 - **json_format_critic** : applied on the first vlm call, verify if the model output is in a valid json format 
 - **task_critic** : applied on the first vlm call, verify the consistency between the value of the anounced performed task and the rest of the scene description following rules given in the prompt
 - **gripper_zero_critic** :  applied on the first vlm call, verify the consistency between the value of is_gripper_zero and the value of gripper_mean_position
