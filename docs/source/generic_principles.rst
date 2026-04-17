@@ -7,7 +7,7 @@ Each critics target a specific hallucination that was observed empirically.
 In this particular application with 2 successive VLM calls, we have to do 2 sets of critics that verify different type of hallucinations.
 
 
-.. image:: VLM-criticized-scheme.png
+.. image:: criticized-VLM-scheme.png
     :width: 600
     :align: center
     :alt: Visual language model identification procedure.
