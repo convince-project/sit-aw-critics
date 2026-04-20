@@ -54,11 +54,14 @@ def task_critic(reply1):
     if json_response['data']['gripper_jaws_positions']['at_the_beginning']['mean_position'] == 0.165 and json_response['data']['gripper_jaws_positions']['at_the_end']['mean_position']==0.165 : 
         known_correlation = 'pick block'
 
-
-    if json_response['task']['performed_task'] != known_correlation :
-        print(known_correlation,json_response['task']['performed_task'])
-        valid = False
-        disagreement = 'You made an error in the performed_task, remember the known correlation "When the gripper jaws position starts at 0.165 and ends at a lower value, you are performing "pick block" task. '
+    try :
+        if json_response['task']['performed_task'] != known_correlation :
+            valid = False
+            disagreement = 'You made an error in the performed_task, remember the known correlation "When the gripper jaws position starts at 0.165 and ends at a lower value, you are performing "pick block" task.'
+    except : 
+        if json_response['data']['task']['performed_task'] != known_correlation :
+            valid = False
+            disagreement = 'You made an error in the performed_task, remember the known correlation "When the gripper jaws position starts at 0.165 and ends at a lower value, you are performing "pick block" task.'
 
     return valid, disagreement
 
@@ -89,7 +92,9 @@ def critics_trigger_reply2(reply2, reply1):
     if valid == False:
         return valid, disagreement
     
-    valid, disagreement = concistency_critic(reply1, reply2)
+    is_reply1_json, _ = json_format_critic(reply1)
+    if is_reply1_json == True :
+        valid, disagreement = concistency_critic(reply2, reply1)
 
     return valid, disagreement
 
